@@ -106,6 +106,11 @@ public class Game : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void Quite()
+    {
+        Application.Quit();
+    }
+
     private void PlayerShooting()
     {
         ++this._shootCount;
