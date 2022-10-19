@@ -12,6 +12,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: -9025191419708495213, guid: 437205671688ef94bb1df64c9cd470fa, type: 3}
+      propertyPath: powerUpProb
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -9025191419708495213, guid: 437205671688ef94bb1df64c9cd470fa, type: 3}
       propertyPath: sprites.Array.size
       value: 2
       objectReference: {fileID: 0}

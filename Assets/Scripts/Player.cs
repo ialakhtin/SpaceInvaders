@@ -24,27 +24,28 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Vector3 leftEdge = Camera.main.ViewportToWorldPoint(Vector3.zero);
-        Vector3 rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
-        float padding = 1;
-
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-            Vector3 position = this.transform.position + Vector3.left * speed * Time.deltaTime;
-            if (position.x < leftEdge.x + padding) {
-                position += Vector3.right * (leftEdge.x + padding - position.x);
-            }
-            this.transform.position = position;
-        } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-            Vector3 position = this.transform.position + Vector3.right * speed * Time.deltaTime;
-            if (position.x > rightEdge.x - padding) {
-                position -= Vector3.right * (position.x - rightEdge.x + padding);
-            }
-            this.transform.position = position;
-        }
-
         if (Input.GetKeyDown(KeyCode.Space)) {
             Shoot();
         }
+        Vector3 leftEdge = Camera.main.ViewportToWorldPoint(Vector3.zero);
+        Vector3 rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
+        float padding = 1;
+        Vector3 direction;
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+            direction = Vector3.left;
+        } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+            direction = Vector3.right;
+        } else {
+            return;
+        }
+        Vector3 position = this.transform.position + direction * speed * Time.deltaTime;
+        if (position.x < leftEdge.x + padding) {
+            position += Vector3.right * (leftEdge.x + padding - position.x);
+        }
+        if (position.x > rightEdge.x - padding) {
+            position -= Vector3.right * (position.x - rightEdge.x + padding);
+        }
+        this.transform.position = position;
     }
 
     private void Shoot()
