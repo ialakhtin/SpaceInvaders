@@ -27,8 +27,6 @@ public class PowerUp : MonoBehaviour
     }
 
     protected virtual void Shoot() {}
-    protected virtual void Activate() {
-        Debug.Log("Default");
-    }
+    protected virtual void Activate() {}
     protected virtual void Deactivate() {}
 }
